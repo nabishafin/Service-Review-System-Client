@@ -1,18 +1,41 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginbg from '../assets/login.jpg'
 import logo from '../assets/logo.png'
+import { AuthContext } from '../provider/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Login = () => {
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location?.state || '/'
 
+    const { signIn, signInWithGoogle } = useContext(AuthContext)
 
-    const handlelogFormInfo = (e) => {
+    const handlelogFormInfo = async (e) => {
         e.preventDefault()
         const form = e.target;
         const email = form.email.value
         const password = form.password.value
-        const logdata = { email, password }
-        console.log(logdata)
+        if (password.length < 6) {
+            toast.error('Password must be at least 6 characters long.');
+        } else if (!/[A-Z]/.test(password)) {
+            toast.error('Password must contain at least one uppercase letter.');
+        } else if (!/[a-z]/.test(password)) {
+            toast.error('Password must contain at least one lowercase letter.');
+        } else {
+            try {
+                //User Login
+                await signIn(email, password)
+                toast.success('Signin Successful')
+                navigate(from, { replace: true })
+                form.reset()
+            } catch (err) {
+                toast.error(err?.message)
+            }
+        }
+
+
     }
 
     return (
@@ -32,7 +55,7 @@ const Login = () => {
                         <p className='mt-3 text-xl text-center text-gray-600 '>
                             Welcome back!
                         </p>
-                        <div
+                        <div onClick={() => signInWithGoogle()}
                             className='flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '
                         >
                             <div className='px-4 py-2'>
@@ -122,7 +145,7 @@ const Login = () => {
                                 to='/registration'
                                 className='text-xs text-gray-500 uppercase  hover:underline'
                             >
-                                Register if not done.
+                                <p className='text-red-600'>Register if not done.</p>
                             </Link>
 
                             <span className='w-1/6 border-b  md:w-1/4'></span>

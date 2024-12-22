@@ -1,14 +1,15 @@
 import React from 'react';
 import logo from "../assets/logo.png"
 import bgImg from '../assets/register.jpg'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import toast from 'react-hot-toast';
 
 const Registration = () => {
 
-    const { createUser, setUser, updateUserProfile } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const { createUser, setUser, updateUserProfile, signInWithGoogle } = useContext(AuthContext)
     const handleRegfromdata = async (e) => {
         e.preventDefault()
         const form = e.target;
@@ -17,19 +18,26 @@ const Registration = () => {
         const photoUrl = form.photo.value
         const password = form.password.value
 
-        try {
-            //2. User Registration
-            const result = await createUser(email, password)
-            console.log(result)
-            await updateUserProfile(name, photoUrl)
-            setUser({ ...result.user, photoURL: photoUrl, displayName: name })
-            toast.success('Signup Successful')
-        } catch (err) {
-            console.log(err)
-            toast.error(err?.message)
+        if (password.length < 6) {
+            toast.error('Password must be at least 6 characters long.');
+        } else if (!/[A-Z]/.test(password)) {
+            toast.error('Password must contain at least one uppercase letter.');
+        } else if (!/[a-z]/.test(password)) {
+            toast.error('Password must contain at least one lowercase letter.');
+        } else {
+            try {
+                //2. User Registration
+                const result = await createUser(email, password)
+                console.log(result)
+                await updateUserProfile(name, photoUrl)
+                setUser({ ...result.user, photoURL: photoUrl, displayName: name })
+                toast.success('Signup Successful')
+                navigate('/')
+                form.reset()
+            } catch (err) {
+                toast.error(err?.message)
+            }
         }
-
-
     }
 
     return (
@@ -46,7 +54,7 @@ const Registration = () => {
                         </p>
 
                         <div
-
+                            onClick={() => signInWithGoogle()}
                             className='flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '
                         >
                             <div className='px-4 py-2'>
