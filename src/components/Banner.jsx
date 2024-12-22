@@ -46,7 +46,7 @@ const Banner = () => {
 
                     {/* Animated Button */}
                     <motion.button
-                        className="btn btn-primary"
+                        className="btn btn-primary mt-5"
                         initial={{ scale: 0.9 }}
                         animate={{ scale: 1 }}
                         transition={{

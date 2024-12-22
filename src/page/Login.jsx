@@ -116,16 +116,16 @@ const Login = () => {
                         </form>
 
                         <div className='flex items-center justify-between mt-4'>
-                            <span className='w-2/5 border-b  md:w-1/4'></span>
+                            <span className='w-1/6 border-b  md:w-1/4'></span>
 
                             <Link
                                 to='/registration'
                                 className='text-xs text-gray-500 uppercase  hover:underline'
                             >
-                                Please register if not done.
+                                Register if not done.
                             </Link>
 
-                            <span className='w-2/5 border-b  md:w-1/4'></span>
+                            <span className='w-1/6 border-b  md:w-1/4'></span>
                         </div>
                     </div>
                 </div>

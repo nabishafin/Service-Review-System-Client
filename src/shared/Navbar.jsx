@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../provider/AuthProvider';
 
 const Navbar = () => {
-    const user = {
-        email: ''
-    };
+
+    const { user } = useContext(AuthContext)
+
+    console.log(user)
+
+
 
     return (
         <div className="navbar  text-white bg-[#0a0a2a]">
@@ -18,7 +22,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {
+                {/* {
                     user?.email ? <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
@@ -37,10 +41,65 @@ const Navbar = () => {
                     </div>
                         :
                         <Link to='/login' className='btn btn-ghost'>Log-In</Link>
+                } */}
+
+                {!user && (
+                    <li>
+                        <Link to='/login'>Login</Link>
+                    </li>
+                )}
+
+                {
+                    user && (
+                        <div className='dropdown dropdown-end z-50 '>
+                            <div
+                                tabIndex={0}
+                                role='button'
+                                className='btn btn-ghost btn-circle avatar'
+                            >
+                                <div title={user?.displayName} className='w-10 rounded-full'>
+                                    <img
+                                        referrerPolicy='no-referrer'
+                                        alt='User Profile Photo'
+                                        src={user?.photoURL}
+                                    />
+                                </div>
+                            </div>
+                            <ul
+                                tabIndex={0}
+                                className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-black rounded-box w-52'
+                            >
+                                <li>
+                                    <Link to='' className='justify-between'>
+                                        Add Service
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to=''>My Reviews</Link>
+                                </li>
+                                <li>
+                                    <Link to=''>Logout</Link>
+                                </li>
+                                <li className='mt-2'>
+                                    <button
+
+                                        className='bg-gray-600 block text-center'
+                                    >
+                                        Logout
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    )
                 }
+
             </div>
-        </div>
+        </div >
     );
 };
 
 export default Navbar;
+
+
+
+

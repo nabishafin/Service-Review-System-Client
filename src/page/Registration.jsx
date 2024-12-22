@@ -2,18 +2,32 @@ import React from 'react';
 import logo from "../assets/logo.png"
 import bgImg from '../assets/register.jpg'
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../provider/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Registration = () => {
 
-    const handleRegfromdata = (e) => {
+    const { createUser, setUser, updateUserProfile } = useContext(AuthContext)
+    const handleRegfromdata = async (e) => {
         e.preventDefault()
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value
         const photoUrl = form.photo.value
         const password = form.password.value
-        const regdata = { name, email, photoUrl, password }
-        console.log(regdata)
+
+        try {
+            //2. User Registration
+            const result = await createUser(email, password)
+            console.log(result)
+            await updateUserProfile(name, photoUrl)
+            setUser({ ...result.user, photoURL: photoUrl, displayName: name })
+            toast.success('Signup Successful')
+        } catch (err) {
+            console.log(err)
+            toast.error(err?.message)
+        }
 
 
     }
