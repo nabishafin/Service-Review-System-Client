@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const user = {
-        email: 'shafin21215@gmail.com'
+        email: ''
     };
 
     return (
