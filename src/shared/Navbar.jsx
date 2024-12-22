@@ -7,7 +7,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar  text-white bg-[#0a0a2a]">
             <div className="navbar-start">
                 <a className="btn btn-ghost text-xl">daisyUI</a>
             </div>

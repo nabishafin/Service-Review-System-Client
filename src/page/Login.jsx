@@ -6,6 +6,15 @@ import logo from '../assets/logo.png'
 const Login = () => {
 
 
+    const handlelogFormInfo = (e) => {
+        e.preventDefault()
+        const form = e.target;
+        const email = form.email.value
+        const password = form.password.value
+        const logdata = { email, password }
+        console.log(logdata)
+    }
+
     return (
         <div>
             <div className='flex justify-center items-center min-h-screen] my-20'>
@@ -16,18 +25,14 @@ const Login = () => {
                             backgroundImage: `url(${loginbg})`,
                         }}
                     ></div>
-
                     <div className='w-full px-6 py-8 md:px-8 lg:w-1/2'>
                         <div className='flex justify-center mx-auto'>
                             <img className='w-auto h-7 sm:h-8' src={logo} alt='' />
                         </div>
-
                         <p className='mt-3 text-xl text-center text-gray-600 '>
                             Welcome back!
                         </p>
-
                         <div
-
                             className='flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '
                         >
                             <div className='px-4 py-2'>
@@ -65,7 +70,7 @@ const Login = () => {
 
                             <span className='w-1/5 border-b dark:border-gray-400 lg:w-1/4'></span>
                         </div>
-                        <form >
+                        <form onSubmit={(e) => handlelogFormInfo(e)}>
                             <div className='mt-4'>
                                 <label
                                     className='block mb-2 text-sm font-medium text-gray-600 '

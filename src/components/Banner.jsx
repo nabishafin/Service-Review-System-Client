@@ -8,7 +8,7 @@ const Banner = () => {
     return (
         <div>
             <motion.div
-                className="relative bg-gradient-to-r from-black via-gray-900 to-black text-gray-800 py-20 px-8 rounded-lg shadow-xl"
+                className="relative bg-gradient-to-r from-black via-gray-900 to-black text-gray-800 py-20 px-8 shadow-xl"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
@@ -31,7 +31,7 @@ const Banner = () => {
 
                     {/* Animated Text */}
                     <motion.p
-                        className="text-lg mb-8 text-green-400 font-bold"
+                        className="text-lg mb-8 text-white font-bold"
                         initial={{ y: 50 }}
                         animate={{ y: 0 }}
                         transition={{
