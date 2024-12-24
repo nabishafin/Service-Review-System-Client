@@ -7,11 +7,6 @@ import icon from '../assets/icon.png'
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext)
-
-    console.log(user)
-
-
-
     return (
         <div className="navbar  text-white bg-gradient-to-r from-black via-gray-900 to-black">
             <div className="navbar-start">
@@ -63,6 +58,9 @@ const Navbar = () => {
                                 </li>
                                 <li>
                                     <Link to=''>My Reviews</Link>
+                                </li>
+                                <li>
+                                    <Link to='/myServices'>My Services</Link>
                                 </li>
                                 <li>
                                     <Link to=''>Logout</Link>

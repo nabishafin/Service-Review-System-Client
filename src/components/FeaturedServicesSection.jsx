@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import ServiceCart from './ServiceCart';
+import Headline from './Headline';
 
 
 const FeaturedServicesSection = () => {
@@ -20,8 +22,23 @@ const FeaturedServicesSection = () => {
 
     return (
         <div>
-
-        </div>
+            <div>
+                <Headline
+                    tittle={' Featured Services Section'}
+                    description={'Our Featured Services offer premium solutions designed to address your specific needs.'}
+                ></Headline>
+            </div>
+            <div className=' grid grid-cols-1 md:grid-cols-3 gap-5 my-10'>
+                {
+                    services.map(service =>
+                        < ServiceCart
+                            key={service._id}
+                            service={service}
+                        ></ServiceCart>
+                    )
+                }
+            </div>
+        </div >
     );
 };
 

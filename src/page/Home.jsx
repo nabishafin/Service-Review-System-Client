@@ -9,10 +9,13 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <OurPartners></OurPartners>
+            <FeaturedServicesSection></FeaturedServicesSection>
+            <div className='my-5'>
+                <OurPartners></OurPartners>
+            </div>
             <ChoosePlan></ChoosePlan>
             <CoutactUs></CoutactUs>
-            <FeaturedServicesSection></FeaturedServicesSection>
+
         </div>
     );
 };
