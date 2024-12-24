@@ -51,17 +51,21 @@ const Navbar = () => {
                                 tabIndex={0}
                                 className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-black rounded-box w-52'
                             >
+
+
                                 <li>
-                                    <Link to='/addservice' className='justify-between'>
-                                        Add Service
-                                    </Link>
+                                    <Link to='/myServices'>My Services</Link>
                                 </li>
                                 <li>
                                     <Link to=''>My Reviews</Link>
                                 </li>
                                 <li>
-                                    <Link to='/myServices'>My Services</Link>
+                                    <Link to='/addservice' className='justify-between'>
+                                        Add Service
+                                    </Link>
                                 </li>
+
+
                                 <li>
                                     <Link to=''>Logout</Link>
                                 </li>

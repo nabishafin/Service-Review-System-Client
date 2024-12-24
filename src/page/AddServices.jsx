@@ -31,7 +31,7 @@ const AddServices = () => {
             await axios.post(`${import.meta.env.VITE_API_URL}/allSrvices`, fromdata)
             toast.success('Added Successfully')
             form.reset()
-            navigate('')
+            navigate('/myServices')
         }
         catch (err) {
             toast.error(err.message)

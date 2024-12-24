@@ -6,6 +6,7 @@ import Registration from "../page/Registration";
 import AddServices from "../page/AddServices";
 import MyServices from "../page/MyServices ";
 import PrivateRoute from "./PrivateRoute";
+import UpdateService from "../page/UpdateService";
 
 
 const router = createBrowserRouter([
@@ -27,13 +28,23 @@ const router = createBrowserRouter([
             },
             {
                 path: "/addservice",
-                element: <AddServices></AddServices>
+                element:
+                    <PrivateRoute>
+                        <AddServices></AddServices>
+                    </PrivateRoute>
             },
             {
                 path: "/myServices",
                 element:
                     <PrivateRoute>
                         <MyServices></MyServices>
+                    </PrivateRoute>
+            },
+            {
+                path: "/UpdateServices/:id",
+                element:
+                    <PrivateRoute>
+                        <UpdateService></UpdateService>
                     </PrivateRoute>
             },
 
