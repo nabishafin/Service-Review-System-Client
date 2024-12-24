@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import { button } from 'motion/react-client';
+import icon from '../assets/icon.png'
 
 const Navbar = () => {
 
@@ -12,20 +13,27 @@ const Navbar = () => {
 
 
     return (
-        <div className="navbar  text-white bg-[#0a0a2a]">
+        <div className="navbar  text-white bg-gradient-to-r from-black via-gray-900 to-black">
             <div className="navbar-start">
-                <a className="btn btn-ghost text-xl">daisyUI</a>
+                <Link to='/' className='flex justify-center items-center gap-1'>
+                    <div className='w-13'>
+                        <img src={icon} alt="" />
+                    </div>
+                    <div className='hidden md:block text-white font-bold text-xl'>
+                        Service-Review-System
+                    </div>
+                </Link>
             </div>
             <div className="navbar-center  lg:flex">
-                <ul className="menu menu-horizontal px-1">
-                    <li><a>Home</a></li>
+                <ul className="menu menu-horizontal px-1 font-semibold">
+                    <li><Link to='/'>Home</Link></li>
                     <li><a>Services</a></li>
                 </ul>
             </div>
             <div className="navbar-end">
 
                 {!user &&
-                    <button> <Link to='/login'>Login</Link></button>
+                    <button className='mr-3 font-bold'> <Link to='/login'>Login</Link></button>
                 }
 
                 {
@@ -49,7 +57,7 @@ const Navbar = () => {
                                 className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-black rounded-box w-52'
                             >
                                 <li>
-                                    <Link to='' className='justify-between'>
+                                    <Link to='/addservice' className='justify-between'>
                                         Add Service
                                     </Link>
                                 </li>

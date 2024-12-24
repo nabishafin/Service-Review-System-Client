@@ -1,75 +1,99 @@
-
 import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css'; // Import Swiper styles
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import 'animate.css';
 import { motion } from 'framer-motion';
-import 'tailwindcss/tailwind.css';
-import 'daisyui/dist/full.css'; // Make sure you import DaisyUI if it's installed
+
+
 
 const Banner = () => {
+    const bannerData = [
+        {
+            title: 'Discover, Review, and Share Services',
+            image: 'https://i.ibb.co.com/rsft04z/system-1.jpg',
+            description: 'We believe in continuous improvement, and your opinion is essential in guiding us toward better services'
+        },
+        {
+            title: 'Help Us Serve You Better with Your Review',
+            image: 'https://i.ibb.co.com/60cZrVg/img-mdzc.jpg',
+            description: ' By sharing your thoughts, you help us understand how we can make every experience better',
+        },
+
+        {
+            title: 'Rate Our Service and Share Your Thoughts',
+            image: 'https://i.ibb.co.com/PTLHk4v/istockphoto-1924190337-612x612.jpg',
+            description: 'Your feedback is incredibly important to us.  you provide us with valuable insights that help us deliver even better experiences',
+        },
+
+    ];
     return (
         <div>
-            <motion.div
-                className="relative bg-gradient-to-r from-black via-gray-900 to-black text-gray-800 py-20 px-8 shadow-xl"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-            >
-                <div className="container mx-auto text-center">
-                    {/* Animated Heading */}
-                    <motion.h1
-                        className="text-5xl font-extrabold mb-6 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-pink-400"
-                        initial={{ x: -100 }}
-                        animate={{ x: 0 }}
-                        transition={{
-                            type: "spring",
-                            stiffness: 100,
-                            damping: 25,
-                            duration: 1.2,
+            <div>
+                <div className="w-full relative">
+                    {/* Swiper Slider */}
+                    <Swiper
+                        spaceBetween={50}
+                        slidesPerView={1}
+                        navigation={{
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        }}
+                        loop={true}
+                        autoplay={{
+                            delay: 3000,
+                            disableOnInteraction: false,
                         }}
                     >
-                        Discover, Review, and Share Services
-                    </motion.h1>
+                        {bannerData.map((item, index) => (
+                            <SwiperSlide key={index}>
+                                <div
+                                    className="w-full h-[400px] bg-cover bg-center relative "
+                                    style={{ backgroundImage: `url(${item.image})` }}
+                                >
+                                    <div className="absolute top-1/2 left-0 w-full text-center text-white transform -translate-y-1/2 px-6">
+                                        <motion.h1
+                                            className="text-2xl md:text-5xl font-extrabold mb-6 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-white  to-white"
+                                            initial={{ x: -100 }}
+                                            animate={{ x: 0 }}
+                                            transition={{
+                                                type: "spring",
+                                                stiffness: 100,
+                                                damping: 25,
+                                                duration: 1.2,
+                                            }}
+                                        >
+                                            {item.title}
+                                        </motion.h1>
+                                        <motion.p
+                                            className="text-lg mb-8 text-white font-bold"
+                                            initial={{ y: 50 }}
+                                            animate={{ y: 0 }}
+                                            transition={{
+                                                duration: 1.2,
+                                                ease: "easeOut",
+                                                repeat: Infinity,
+                                                repeatType: "reverse",
+                                            }}
+                                        >
+                                            {item.description}
+                                        </motion.p>
 
-                    {/* Animated Text */}
-                    <motion.p
-                        className="text-lg mb-8 text-white font-bold"
-                        initial={{ y: 50 }}
-                        animate={{ y: 0 }}
-                        transition={{
-                            duration: 1.2,
-                            ease: "easeOut",
-                            repeat: Infinity,
-                            repeatType: "reverse",
-                        }}
-                    >
-                        Join our community, find great services, and leave meaningful reviews!
-                    </motion.p>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
 
-                    {/* Animated Button */}
-                    <motion.button
-                        className="btn btn-primary mt-5"
-                        initial={{ scale: 0.9 }}
-                        animate={{ scale: 1 }}
-                        transition={{
-                            duration: 0.5,
-                            ease: "easeInOut",
-                            repeat: Infinity,
-                            repeatType: "reverse",
-                        }}
-                    >
-                        Get Started
-                    </motion.button>
+                    {/* Navigation Arrows */}
+                    <div className="swiper-button-prev absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-3xl cursor-pointer">
+                        <FaArrowLeft />
+                    </div>
+                    <div className="swiper-button-next absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-3xl cursor-pointer">
+                        <FaArrowRight />
+                    </div>
                 </div>
-
-                {/* Animated Background Circles */}
-                <motion.div
-                    className="absolute top-16 right-16 w-56 h-56 bg-indigo-600 opacity-40 rounded-full animate-pulse hidden md:block"
-                    style={{ animationDuration: '5s' }}
-                />
-                <motion.div
-                    className="absolute bottom-16 left-16 w-48 h-48 bg-purple-500 opacity-30 rounded-full animate-pulse hidden md:block"
-                    style={{ animationDuration: '6s' }}
-                />
-            </motion.div>
+            </div>
         </div>
     );
 };
