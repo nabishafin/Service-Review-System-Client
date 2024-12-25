@@ -7,6 +7,7 @@ import AddServices from "../page/AddServices";
 import MyServices from "../page/MyServices ";
 import PrivateRoute from "./PrivateRoute";
 import UpdateService from "../page/UpdateService";
+import ServicesPage from "../page/ServicesPage";
 
 
 const router = createBrowserRouter([
@@ -41,13 +42,19 @@ const router = createBrowserRouter([
                     </PrivateRoute>
             },
             {
-                path: "/UpdateServices/:id",
+                path: "/update/:id",
                 element:
                     <PrivateRoute>
                         <UpdateService></UpdateService>
                     </PrivateRoute>
             },
-
+            {
+                path: "/services",
+                element:
+                    <PrivateRoute>
+                        <ServicesPage></ServicesPage>
+                    </PrivateRoute>
+            },
         ],
     },
 ]);

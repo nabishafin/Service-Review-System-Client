@@ -8,7 +8,7 @@ const MyServices = () => {
     const user = useContext(AuthContext); // Fetching user context
 
     const [servicces, setServicces] = useState([]); // State to hold the jobs
-    console.log(servicces)
+
 
     useEffect(() => {
         fetchAllJobs(); // Fetch jobs when the component is mounted or when user.email changes
@@ -166,7 +166,7 @@ const MyServices = () => {
                                                             </button>
 
                                                             <Link
-                                                                to={`/update/${'ascs'}`}
+                                                                to={`/update/${service?._id}`}
                                                                 className='text-gray-500 transition-colors duration-200   hover:text-yellow-500 focus:outline-none'
                                                             >
                                                                 <svg

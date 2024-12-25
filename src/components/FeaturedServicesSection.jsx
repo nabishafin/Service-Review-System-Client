@@ -7,6 +7,8 @@ import Headline from './Headline';
 const FeaturedServicesSection = () => {
     const [services, setServices] = useState([]);
     console.log(services)
+
+
     useEffect(() => {
         fetchAllJobs();
     }, []);

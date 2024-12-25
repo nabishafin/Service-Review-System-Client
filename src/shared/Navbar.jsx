@@ -22,7 +22,7 @@ const Navbar = () => {
             <div className="navbar-center  lg:flex">
                 <ul className="menu menu-horizontal px-1 font-semibold">
                     <li><Link to='/'>Home</Link></li>
-                    <li><a>Services</a></li>
+                    <li><Link to={'/services'}>Services</Link></li>
                 </ul>
             </div>
             <div className="navbar-end">
