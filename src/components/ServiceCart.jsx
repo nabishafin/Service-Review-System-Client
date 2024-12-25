@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom';
 const ServiceCart = ({ service }) => {
 
     return (
@@ -17,7 +18,7 @@ const ServiceCart = ({ service }) => {
                     <p className="text-sm text-gray-500">{service.description.slice(0, 70)} .....</p>
                     <div className="flex items-center justify-between">
                         <p className="text-xl font-bold text-gray-800">${service.price}</p>
-                        <button className="btn btn-primary btn-sm mt-8">See Details</button>
+                        <Link to={`/serviceinfo/${service._id}`}><button className="btn btn-primary btn-sm mt-8">See Details</button></Link>
                     </div>
                 </div>
             </motion.div>

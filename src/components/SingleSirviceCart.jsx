@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SingleSirviceCart = ({ service }) => {
     return (
@@ -20,7 +21,7 @@ const SingleSirviceCart = ({ service }) => {
                     </div>
                 </div>
             </div> */}
-            <div class=" mx-auto bg-gray-800 text-white shadow-2xl rounded-lg overflow-hidden">
+            <div class=" mx-auto bg-white text-white shadow-2xl rounded-lg overflow-hidden">
                 <img className='w-full h-56 object-cover' src={service.serviceImage} alt="" />
                 <div class="p-6">
                     <h3 class="text-2xl font-semibold text-white">{service.title}</h3>
@@ -32,12 +33,12 @@ const SingleSirviceCart = ({ service }) => {
                     </div>
 
                     <div class="mt-6">
-                        <button class="w-full bg-primary text-gray-800 font-semibold py-2 rounded-lg hover:bg-white transition duration-300">See Details</button>
+                        <Link to={`/serviceinfo/${service._id}`}><button class="w-full bg-primary text-gray-800 font-semibold py-2 rounded-lg hover:bg-white transition duration-300">See Details</button></Link>
                     </div>
                 </div>
             </div>
 
-        </div>
+        </div >
     );
 };
 
