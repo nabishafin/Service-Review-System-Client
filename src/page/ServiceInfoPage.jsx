@@ -3,6 +3,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import toast from 'react-hot-toast';
+import Headline from '../components/Headline';
+import ReviewCart from '../components/ReviewCart';
 
 const ServiceInfoPage = () => {
     const user = useContext(AuthContext);
@@ -12,7 +14,7 @@ const ServiceInfoPage = () => {
     const [date, setDate] = useState(new Date());
     const { id } = useParams();
 
-    console.log(user);
+
     const [service, setService] = useState([]); // Corrected state name
 
     const handleRatingChange = (value) => {
@@ -69,53 +71,78 @@ const ServiceInfoPage = () => {
         }
     };
 
+
+
+    // get review from db
+    const [reviews, setReviews] = useState([]);
+    console.log(reviews)
+    useEffect(() => {
+        fetchAllreviews();
+    }, []);
+
+    const fetchAllreviews = async () => {
+        try {
+            const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/reviews`);
+            setReviews(data);
+        } catch (error) {
+            console.error('Error fetching services:', error);
+        }
+    };
+
+
+
+
+
     return (
         <div>
-            <div className='flex flex-col md:flex-row justify-around gap-5  items-center min-h-[calc(100vh-306px)] md:max-w-screen-xl mx-auto '>
-                {/* Job Details */}
-                <div className='flex-1  px-4 py-7 bg-white rounded-md shadow-md md:min-h-[350px]'>
-                    <div className='flex items-center justify-between'>
-                        <span className='text-sm font-light text-gray-800 '>
+            <div className="flex flex-col md:flex-row justify-around gap-5 items-center min-h-[300px] md:max-w-screen-xl mx-auto">
+                <div className="flex-1 px-4 py-7 bg-white rounded-md shadow-md md:min-h-[350px]">
+                    <div className="flex items-center justify-between">
+                        <span className="text-sm font-light text-gray-800">
                             Date: {service.date}
                         </span>
-                        <span className='px-4 py-1 text-xs text-blue-800 uppercase bg-blue-200 rounded-full '>
+                        <span className="px-4 py-1 text-xs text-blue-800 uppercase bg-blue-200 rounded-full">
                             {service.category}
                         </span>
                     </div>
 
                     <div>
-                        <h1 className='mt-2 text-3xl font-semibold text-gray-800 '>
+                        <h1 className="mt-2 text-3xl font-semibold text-gray-800">
                             {service.title}
                         </h1>
 
-                        <p className='mt-2 text-lg text-gray-600 '>
+                        <p className="mt-2 text-lg text-gray-600">
                             {service.description}
                         </p>
-                        <p className='mt-6 text-sm font-bold text-gray-600 '>
+
+                        <p className="mt-6 text-sm font-bold text-gray-600">
                             Details:
                         </p>
-                        <div className='flex items-center gap-5'>
+
+                        <div className="flex flex-col md:flex-row md:items-center gap-5">
                             <div>
-                                <p className='mt-2 text-sm  text-gray-600 '>
+                                <p className="mt-2 text-sm text-gray-600">
                                     Name: {user?.user?.displayName}
                                 </p>
-                                <p className='mt-2 text-sm  text-gray-600 '>
+                                <p className="mt-2 text-sm text-gray-600">
                                     Email: {user?.user?.email}
                                 </p>
                             </div>
-                            <div className='rounded-full object-cover overflow-hidden w-14 h-14'>
+                            <div className="rounded-full overflow-hidden w-14 h-14 mt-4 md:mt-0">
                                 <img
                                     src={user?.user?.photoURL}
-                                    alt=''
+                                    alt="User"
+                                    className="w-full h-full object-cover"
                                 />
                             </div>
                         </div>
-                        <p className='mt-6 text-lg font-bold text-gray-600 '>
+
+                        <p className="mt-6 text-lg font-bold text-gray-600">
                             Price: BDT {service.price}
                         </p>
                     </div>
                 </div>
-                {/* Place A Bid Form */}
+
                 <section className="p-6 w-full bg-white rounded-md shadow-md flex-1 md:min-h-[300px]">
                     <h2 className="text-lg font-semibold text-gray-700 capitalize">Place A Review</h2>
 
@@ -186,6 +213,24 @@ const ServiceInfoPage = () => {
                         </div>
                     </form>
                 </section>
+            </div>
+
+            <div>
+                <Headline
+                    tittle={'Discover Why Our Service is Trusted by Many'}
+                    description={'This title and description aim to engage visitors and highlight the value of customer experiences.'}
+                ></Headline>
+                <div className='my-20 grid grid-cols-1 md:grid-cols-4 gap-4'>
+                    {
+                        reviews.map(review =>
+                            <ReviewCart
+                                key={review._id}
+                                review={review}
+                            ></ReviewCart>
+                        )
+                    }
+
+                </div>
             </div>
         </div>
     );

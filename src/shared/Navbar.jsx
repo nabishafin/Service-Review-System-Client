@@ -57,7 +57,7 @@ const Navbar = () => {
                                     <Link to='/myServices'>My Services</Link>
                                 </li>
                                 <li>
-                                    <Link to=''>My Reviews</Link>
+                                    <Link to='/reviews'>My Reviews</Link>
                                 </li>
                                 <li>
                                     <Link to='/addservice' className='justify-between'>
