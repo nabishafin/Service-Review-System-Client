@@ -10,65 +10,75 @@ import UpdateService from "../page/UpdateService";
 import ServicesPage from "../page/ServicesPage";
 import ServiceInfoPage from "../page/ServiceInfoPage";
 import MyReviews from "../page/MyReviews";
+import UpdateReview from "../page/UpdateReview";
+import ErrorPage from "../components/ErrorPage";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root></Root>,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: "/",
-                element: <Home></Home>,
+                element: <Home />,
             },
             {
                 path: "/login",
-                element: <Login></Login>
+                element: <Login />
             },
             {
                 path: "/registration",
-                element: <Registration></Registration>
+                element: <Registration />
             },
             {
                 path: "/addservice",
                 element:
                     <PrivateRoute>
-                        <AddServices></AddServices>
+                        <AddServices />
                     </PrivateRoute>
             },
             {
                 path: "/myServices",
                 element:
                     <PrivateRoute>
-                        <MyServices></MyServices>
+                        <MyServices />
                     </PrivateRoute>
             },
             {
                 path: "/update/:id",
                 element:
                     <PrivateRoute>
-                        <UpdateService></UpdateService>
+                        <UpdateService />
                     </PrivateRoute>
             },
             {
                 path: "/services",
                 element:
                     <PrivateRoute>
-                        <ServicesPage></ServicesPage>
-                    </PrivateRoute>
+                        <ServicesPage />
+                    </PrivateRoute >
             },
             {
                 path: "/serviceinfo/:id",
                 element:
                     <PrivateRoute>
-                        <ServiceInfoPage></ServiceInfoPage>
-                    </PrivateRoute>
+                        <ServiceInfoPage />
+                    </PrivateRoute >
             },
             {
                 path: "/reviews",
                 element:
                     <PrivateRoute>
-                        <MyReviews></MyReviews>
+                        <MyReviews />
+                    </PrivateRoute>
+            },
+            {
+                path: "/updatereview/:id",
+                element:
+                    <PrivateRoute>
+                        <UpdateReview />
                     </PrivateRoute>
             },
         ],

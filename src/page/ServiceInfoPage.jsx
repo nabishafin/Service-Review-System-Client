@@ -64,7 +64,7 @@ const ServiceInfoPage = () => {
             setDate(new Date());
 
             // Optionally navigate to another page
-            navigate('/');
+            navigate('/reviews');
         } catch (error) {
             toast.error('Failed to add review. Please try again later.');
             console.error('Error posting review:', error);
@@ -96,7 +96,7 @@ const ServiceInfoPage = () => {
     return (
         <div>
             <div className="flex flex-col md:flex-row justify-around gap-5 items-center min-h-[300px] md:max-w-screen-xl mx-auto">
-                <div className="flex-1 px-4 py-7 bg-white rounded-md shadow-md md:min-h-[350px]">
+                <div className="flex-1 w-full p-6 bg-white rounded-md shadow-md md:min-h-[400px]">
                     <div className="flex items-center justify-between">
                         <span className="text-sm font-light text-gray-800">
                             Date: {service.date}
@@ -220,6 +220,9 @@ const ServiceInfoPage = () => {
                     tittle={'Discover Why Our Service is Trusted by Many'}
                     description={'This title and description aim to engage visitors and highlight the value of customer experiences.'}
                 ></Headline>
+                <div className='p-6'>
+                    <p className='text-2xl font-bold'>Total Review Count : <span className='bg-green-200 p-2 rounded-full'>{reviews.length}</span></p>
+                </div>
                 <div className='my-20 grid grid-cols-1 md:grid-cols-4 gap-4'>
                     {
                         reviews.map(review =>

@@ -4,6 +4,7 @@ import OurPartners from '../components/OurPartners';
 import CoutactUs from '../components/CotactUs';
 import ChoosePlan from '../components/ChoosePlan';
 import FeaturedServicesSection from '../components/FeaturedServicesSection';
+import WhyChoseUs from '../components/WhyChoseUs';
 
 const Home = () => {
     return (
@@ -13,9 +14,8 @@ const Home = () => {
             <div className='my-5'>
                 <OurPartners></OurPartners>
             </div>
-            <ChoosePlan></ChoosePlan>
+            <WhyChoseUs></WhyChoseUs>
             <CoutactUs></CoutactUs>
-
         </div>
     );
 };
