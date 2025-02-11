@@ -147,7 +147,7 @@ const ServiceInfoPage = () => {
                     <h2 className="text-lg font-semibold text-gray-700 capitalize">Place A Review</h2>
 
                     <form onSubmit={handleReviewForm}>
-                        <div className="mb-4">
+                        <div className="mb-4 py-9">
                             <label className="text-gray-700" htmlFor="description">
                                 Review
                             </label>
