@@ -28,13 +28,9 @@ const ServicesPage = () => {
 
     // Filter services by category and search term
     const filteredServices = services.filter(service => {
-        // Check if service category matches the selected category
         const categoryMatch = service.category === category;
-
-        // Check if the service title or description matches the search query
         const searchMatch = service.title.toLowerCase().includes(search.toLowerCase()) ||
             service.description.toLowerCase().includes(search.toLowerCase());
-
         return categoryMatch && searchMatch;
     });
 
@@ -45,8 +41,8 @@ const ServicesPage = () => {
 
     return (
         <div>
-            <div className='flex justify-center items-center my-2'>
-                <form>
+            <div className='flex flex-col md:flex-row justify-center items-center my-4 md:my-2'>
+                <form className='w-full md:w-auto'>
                     <div className='flex p-1 overflow-hidden border rounded-lg focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300'>
                         <input
                             className='px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent'
@@ -57,13 +53,14 @@ const ServicesPage = () => {
                             aria-label='Enter Job Title'
                         />
                         <button
-                            type="button" // prevent form submission
+                            type="button"
                             className='px-1 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none'>
                             Search
                         </button>
                     </div>
                 </form>
-                <details className="dropdown text-center">
+
+                <details className="dropdown text-center mt-4 md:mt-0 md:ml-4">
                     <summary className="btn m-1">Filter By Category</summary>
                     <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                         <li onClick={() => setCategory('Technology')}><a>Technology</a></li>
@@ -73,15 +70,14 @@ const ServicesPage = () => {
                     </ul>
                 </details>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-4 gap-3 py-5'>
-                {
-                    filteredServices.map(service =>
-                        <SingleSirviceCart
-                            key={service._id}
-                            service={service}
-                        />
-                    )
-                }
+
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 p-5'>
+                {filteredServices.map(service =>
+                    <SingleSirviceCart
+                        key={service._id}
+                        service={service}
+                    />
+                )}
             </div>
         </div>
     );

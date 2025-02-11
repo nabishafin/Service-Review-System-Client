@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CoutactUs = () => {
+const Support = () => {
     return (
         <div>
             <div class="container mx-auto p-8 bg-white text-white rounded-lg shadow-md">
@@ -41,4 +41,4 @@ const CoutactUs = () => {
     );
 };
 
-export default CoutactUs;
+export default Support;

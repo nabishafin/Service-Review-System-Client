@@ -1,21 +1,24 @@
 import React from 'react';
 import Banner from '../components/Banner';
 import OurPartners from '../components/OurPartners';
-import CoutactUs from '../components/CotactUs';
-import ChoosePlan from '../components/ChoosePlan';
 import FeaturedServicesSection from '../components/FeaturedServicesSection';
 import WhyChoseUs from '../components/WhyChoseUs';
+import Support from '../components/Support';
+import Contact from '../components/Contact';
+import FAQ from '../components/FAQ ';
 
 const Home = () => {
     return (
         <div>
-            <Banner></Banner>
-            <FeaturedServicesSection></FeaturedServicesSection>
+            <Banner />
+            <FeaturedServicesSection />
             <div className='my-5'>
-                <OurPartners></OurPartners>
+                <OurPartners />
             </div>
-            <WhyChoseUs></WhyChoseUs>
-            <CoutactUs></CoutactUs>
+            <div className='my-5'>
+                <Support />
+            </div>
+            <FAQ />
         </div>
     );
 };
