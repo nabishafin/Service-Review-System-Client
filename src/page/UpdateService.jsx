@@ -64,7 +64,7 @@ const UpdateService = () => {
     return (
         <div>
             <div className="container mx-auto py-12">
-                <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+                <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg"> 
                     <h2 className="text-3xl font-semibold text-center mb-8">UpdateService</h2>
                     <form onSubmit={(e) => { handleService(e) }} className="space-y-6">
 
@@ -74,7 +74,7 @@ const UpdateService = () => {
                             <input type="text" name="image" placeholder='service-image-url' defaultValue={service.serviceImage} className="input input-bordered w-full" required />
                         </div>
 
-                        {/* <!-- Service Title --> */}
+                        {/* <!-- Service Title --> */}          
                         <div>
                             <label for="service-title" className="block text-lg font-medium">Service Title</label>
                             <input type="text" id="service-title" name="title" defaultValue={service.title} placeholder='service-title' className="input input-bordered w-full" required />

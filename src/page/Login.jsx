@@ -25,6 +25,7 @@ const Login = () => {
             toast.error('Password must contain at least one lowercase letter.');
         } else {
             try {
+
                 //User Login
                 await signIn(email, password)
                 toast.success('Signin Successful')
@@ -34,6 +35,7 @@ const Login = () => {
                 toast.error(err?.message)
             }
         }
+
 
 
     }
