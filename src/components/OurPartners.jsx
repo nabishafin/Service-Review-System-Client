@@ -9,7 +9,7 @@ const OurPartners = () => {
 
     return (
         <div>
-            <div className="py-12 bg-gray-100">
+            <div className="py-12 bg-gray-100 p-2">
                 <div className="max-w-screen-xl mx-auto text-center">
                     <h2 className="text-4xl font-bold text-[#1c082b]">Meet Our Partners</h2>
                     <p className="text-lg text-gray-600 mb-12">

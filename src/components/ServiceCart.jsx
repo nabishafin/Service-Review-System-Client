@@ -6,7 +6,7 @@ const ServiceCart = ({ service }) => {
     return (
         <div>
             <motion.div
-                className="flex items-center space-x-4 p-4 border-b border-gray-200 shadow-lg"
+                className="flex items-center space-x-4 p-4 border-b border-gray-200 shadow-lg "
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}

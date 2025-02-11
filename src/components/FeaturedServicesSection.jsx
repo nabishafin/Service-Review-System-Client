@@ -30,7 +30,7 @@ const FeaturedServicesSection = () => {
                     description={'Our Featured Services offer premium solutions designed to address your specific needs.'}
                 ></Headline>
             </div>
-            <div className=' grid grid-cols-1 md:grid-cols-3 gap-5 my-10'>
+            <div className=' grid grid-cols-1 md:grid-cols-3 gap-5 my-10 p-2'>
                 {
                     services.map(service =>
                         < ServiceCart
