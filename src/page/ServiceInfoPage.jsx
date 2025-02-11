@@ -95,8 +95,8 @@ const ServiceInfoPage = () => {
 
     return (
         <div>
-            <div className="flex flex-col md:flex-row justify-around gap-5 items-center min-h-[300px] md:max-w-screen-xl mx-auto">
-                <div className="flex-1 w-full p-6 bg-white rounded-md shadow-md md:min-h-[400px]">
+            <div className="flex flex-col md:flex-row justify-around gap-5 items-center min-h-[300px] md:max-w-screen-xl mx-auto p-2">
+                <div className="flex-1 w-full p-6 bg-white rounded-md shadow-md md:min-h-[400px] ">
                     <div className="flex items-center justify-between">
                         <span className="text-sm font-light text-gray-800">
                             Date: {service.date}
@@ -106,7 +106,7 @@ const ServiceInfoPage = () => {
                         </span>
                     </div>
 
-                    <div>
+                    <div className=''>
                         <h1 className="mt-2 text-3xl font-semibold text-gray-800">
                             {service.title}
                         </h1>
@@ -143,7 +143,7 @@ const ServiceInfoPage = () => {
                     </div>
                 </div>
 
-                <section className="p-6 w-full bg-white rounded-md shadow-md flex-1 md:min-h-[300px]">
+                <section className="p-6 w-full bg-white rounded-md shadow-md flex-1 md:min-h-[300px] ">
                     <h2 className="text-lg font-semibold text-gray-700 capitalize">Place A Review</h2>
 
                     <form onSubmit={handleReviewForm}>
@@ -223,7 +223,7 @@ const ServiceInfoPage = () => {
                 <div className='p-6'>
                     <p className='text-2xl font-bold'>Total Review Count : <span className='bg-green-200 p-2 rounded-full'>{reviews.length}</span></p>
                 </div>
-                <div className='my-20 grid grid-cols-1 md:grid-cols-4 gap-4'>
+                <div className='my-20 grid grid-cols-1 md:grid-cols-4 gap-4 px-4'>
                     {
                         reviews.map(review =>
                             <ReviewCart
