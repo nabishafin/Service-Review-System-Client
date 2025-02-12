@@ -4,7 +4,7 @@ import OurPartners from '../components/OurPartners';
 import FeaturedServicesSection from '../components/FeaturedServicesSection';
 import WhyChoseUs from '../components/WhyChoseUs';
 import Support from '../components/Support';
-import Contact from '../components/Contact';
+
 import FAQ from '../components/FAQ ';
 
 const Home = () => {
@@ -15,6 +15,7 @@ const Home = () => {
             <div className='my-5'>
                 <OurPartners />
             </div>
+            <WhyChoseUs></WhyChoseUs>
             <div className='my-5'>
                 <Support />
             </div>
