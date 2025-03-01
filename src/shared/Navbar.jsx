@@ -8,7 +8,7 @@ const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false); // State for mobile menu
 
     return (
-        <div className="navbar w-full text-blue-700 bg-white sticky top-0 z-50 shadow-md">
+        <div className="navbar w-full text-blue-700 bg-slate-100 sticky top-0 z-50 shadow-md">
             {/* Container for the navbar content */}
             <div className="max-w-screen-xl w-full mx-auto px-4 lg:px-8 flex justify-between items-center">
                 {/* Logo Section */}

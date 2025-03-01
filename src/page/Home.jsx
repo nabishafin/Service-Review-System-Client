@@ -16,7 +16,7 @@ const Home = () => {
                 <OurPartners />
             </div>
             <WhyChoseUs></WhyChoseUs>
-            <div className='my-5'>
+            <div className='my-5 p-2'>
                 <Support />
             </div>
             <FAQ />

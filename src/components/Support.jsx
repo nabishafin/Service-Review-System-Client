@@ -3,7 +3,7 @@ import React from 'react';
 const Support = () => {
     return (
         <div>
-            <div className="container mx-auto p-8 bg-white text-white rounded-lg shadow-md">
+            <div className="container mx-auto p-8 bg-white text-white rounded-lg shadow-md p-2">
                 <h2 className="text-2xl text-[#1c082b] font-bold mb-4">Looking For Support?</h2>
                 <p className="mb-6 text-[#1c082b]">Got a Question? We'd love to hear from you. Send us a message and we will respond you as soon as possible.</p>
 
