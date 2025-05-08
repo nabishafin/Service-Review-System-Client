@@ -1,7 +1,8 @@
-import React from 'react';
-import ParterCart from './parterCart';
 
-// import ParterCart from './parterCart';
+import ParterCart from './ParterCart';
+
+
+
 
 const OurPartners = () => {
 
