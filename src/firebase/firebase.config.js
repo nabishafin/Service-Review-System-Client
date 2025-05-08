@@ -4,7 +4,8 @@ import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+console.log("API Key:", import.meta.env.VITE_apiKey);
+
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_apiKey,
     authDomain: import.meta.env.VITE_authDomain,
