@@ -2,8 +2,6 @@
 import ParterCart from './ParterCart';
 
 
-
-
 const OurPartners = () => {
 
 
