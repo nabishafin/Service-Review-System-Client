@@ -7,13 +7,14 @@ import { getAuth } from "firebase/auth";
 console.log("API Key:", import.meta.env.VITE_apiKey);
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDOX7a37iKtVF9upOFd4SH6agPrRA8aJq0",
+    apiKey: import.meta.env.VITE_apiKey,
     authDomain: "service-review-system-clint.firebaseapp.com",
     projectId: "service-review-system-clint",
     storageBucket: "service-review-system-clint.firebasestorage.app",
-    messagingSenderId: "546579290704",
-    appId: "1:546579290704:web:cdcf990ea29723d1fe4f55",
+    messagingSenderId: import.meta.env.VITE_messagingSenderId,
+    appId: import.meta.env.VITE_appId,
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
