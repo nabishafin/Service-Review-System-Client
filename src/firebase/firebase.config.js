@@ -7,12 +7,12 @@ import { getAuth } from "firebase/auth";
 console.log("API Key:", import.meta.env.VITE_apiKey);
 
 const firebaseConfig = {
-    apiKey: import.meta.env.VITE_apiKey,
-    authDomain: import.meta.env.VITE_authDomain,
-    projectId: import.meta.env.VITE_projectId,
-    storageBucket: import.meta.env.VITE_storageBucket,
-    messagingSenderId: import.meta.env.VITE_messagingSenderId,
-    appId: import.meta.env.VITE_appId,
+    apiKey: "AIzaSyDOX7a37iKtVF9upOFd4SH6agPrRA8aJq0",
+    authDomain: "service-review-system-clint.firebaseapp.com",
+    projectId: "service-review-system-clint",
+    storageBucket: "service-review-system-clint.firebasestorage.app",
+    messagingSenderId: "546579290704",
+    appId: "1:546579290704:web:cdcf990ea29723d1fe4f55",
 };
 
 // Initialize Firebase
