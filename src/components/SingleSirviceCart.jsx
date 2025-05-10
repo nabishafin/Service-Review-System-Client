@@ -1,27 +1,45 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Star } from 'lucide-react'; // optional: replace with any icon you like
+import CustomizeButton from '../shared/CustomizeButton';
 
 const SingleSirviceCart = ({ service }) => {
     return (
-        <div>
-            <div class=" mx-auto bg-white text-white shadow-2xl rounded-lg overflow-hidden">
-                <img className='w-full h-56 object-cover' src={service.serviceImage} alt="" />
-                <div class="p-6">
-                    <h3 class="text-2xl font-semibold text-black">{service.title}</h3>
-                    <p class="text-black mt-2">{service.description.slice(0, 70)}</p>
+        <div className="bg-white dark:bg-gray-800 shadow-lg rounded-2xl overflow-hidden transition-all hover:shadow-2xl">
+            <img
+                className="w-full h-56 object-cover"
+                src={service.serviceImage}
+                alt={service.title}
+            />
 
-                    <div class="mt-4">
-                        <p class="text-sm text-black">Category: {service.category}</p>
-                        <p class="text-xl font-bold text-white mt-1">BDT {service.price}</p>
-                    </div>
+            <div className="p-5 text-gray-800 dark:text-gray-100">
+                <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                    {service.description.slice(0, 80)}...
+                </p>
 
-                    <div class="mt-6">
-                        <Link to={`/serviceinfo/${service._id}`}><button class="w-full bg-primary text-gray-800 font-semibold py-2 rounded-lg hover:bg-white transition duration-300">See Details</button></Link>
+                {/* Provider & Category */}
+                <div className="flex justify-between items-center text-sm text-gray-500 dark:text-gray-400 mb-3">
+                    <span>Category: {service.category}</span>
+                    <span>By: <span className="font-medium">Nabi</span></span> {/* you can pass provider name dynamically */}
+                </div>
+
+                {/* Price & Rating */}
+                <div className="flex justify-between items-center mb-4">
+                    <p className="text-lg font-bold text-blue-600 dark:text-blue-400">BDT {service.price}</p>
+                    <div className="flex items-center space-x-1 text-yellow-500">
+                        {[...Array(5)].map((_, i) => (
+                            <Star key={i} size={16} fill="currentColor" strokeWidth={0} />
+                        ))}
                     </div>
                 </div>
-            </div>
 
-        </div >
+                {/* Action Button */}
+                <Link to={`/serviceinfo/${service._id}`}>
+                    <CustomizeButton text={'See Details'} />
+                </Link>
+            </div>
+        </div>
     );
 };
 

@@ -38,7 +38,7 @@ const FAQ = () => {
                             className="peer"
                             onClick={() => toggleAnswer(index)}
                         />
-                        <div className="collapse-title text-xl font-medium bg-base-200 text-black peer-checked:bg-primary peer-checked:text-white transition-colors duration-300">
+                        <div className="collapse-title text-xl font-medium bg-base-200 text-black peer-checked:bg-blue-950 peer-checked:text-white transition-colors duration-300">
                             {item.question}
                         </div>
                         <div className={`collapse-content ${activeIndex === index ? 'block' : 'hidden'}`}>
