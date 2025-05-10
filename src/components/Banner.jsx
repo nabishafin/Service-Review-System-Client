@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CustomizeButton from '../shared/CustomizeButton';
-import img2 from '../assets/syustem-2.jpg';
-import img3 from '../assets/system-1.png';
+import img3 from '../assets/syustem-2.jpg';
+import img2 from '../assets/tecnical support.jpg';
 import img1 from '../assets/service.webp';
 
 const Banner = () => {
