@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CustomizeButton from '../shared/CustomizeButton';
+import img1 from '../assets/syustem-2.jpg';
+import img3 from '../assets/system-1.png';
+import img2 from '../assets/system-3.webp';
 
 const Banner = () => {
-    const images = [
-        'https://i.ibb.co/qYxYZ6wk/disscuss.jpg',
-        'https://images.unsplash.com/photo-1517841905240-472988babdf9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-        'https://images.unsplash.com/photo-1521747116042-5a810fda9664?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-    ];
+    const images = [img1, img2, img3]; // Replace with your image imports
+
 
     const [currentIndex, setCurrentIndex] = useState(0);
 

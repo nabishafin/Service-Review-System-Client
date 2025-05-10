@@ -1,10 +1,10 @@
 import React from 'react';
-import icon from '../assets/icon.png'
+import icon from '../assets/icons8-service-96.png'
 
 const Footer = () => {
     return (
-        <div>
-            <footer className="footer  bg-gradient-to-r from-black via-gray-900 to-black text-neutral-content p-10">
+        <div className='bg-gradient-to-r from-black via-gray-900 to-black text-neutral-content py-16'>
+            <footer className="footer w-full md:w-10/12 px-6 md:px-0 mx-auto ">
                 <aside>
                     <img src={icon} alt="" />
                     <p>
@@ -34,7 +34,7 @@ const Footer = () => {
                     <a className="link link-hover">Cookie policy</a>
                 </nav>
             </footer>
-            <footer className="footer  bg-gradient-to-r from-black via-gray-900 to-black text-neutral-content items-center p-10">
+            <footer className="footer  w-full md:w-10/12 px-6 md:px-0 mx-auto  bg-gradient-to-r from-black via-gray-900 to-black text-neutral-content items-center p-10">
                 <aside className="grid-flow-col items-center">
                     <svg
                         width="36"
