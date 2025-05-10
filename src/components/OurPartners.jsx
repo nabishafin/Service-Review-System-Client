@@ -11,8 +11,8 @@ const PartnersSection = () => {
     const logos = [logo1, logo2, logo3, logo4, logo5, logo6];
 
     return (
-        <section className="bg-gradient-to-r from-indigo-950 to-black dark:from-gray-100 dark:to-white py-16 px-6 transition-colors duration-500 mt-28">
-            <div className="w-full md:w-10/12 px-4 md:px-0 mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+        <section className="bg-gradient-to-r from-indigo-950 to-black mt-0 dark:from-gray-100 dark:to-white py-16 px-6 transition-colors duration-500 mt-28">
+            <div className="w-full md:w-10/12 md:px-0 mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
                 {/* Left side - Logos */}
                 <div className="grid grid-cols-2 gap-6 w-full md:w-1/2">
                     {logos.map((logo, index) => (

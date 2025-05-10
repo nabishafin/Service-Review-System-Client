@@ -30,9 +30,8 @@ const Banner = () => {
 
     return (
 
-        <div className="w-full 
- dark:bg-gray-900 py-16 px-6 lg:px-20 transition-colors duration-500">
-            <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center gap-12">
+        <div className="py-0 md:py-16 dark:bg-gray-900  px-4 md:px-8 transition-colors duration-500 ">
+            <div className=" w-full  md:w-10/12 mx-auto flex flex-col lg:flex-row justify-between items-center gap-10 ">
 
                 {/* Left Content */}
                 <motion.div
@@ -54,11 +53,9 @@ const Banner = () => {
                     </ul>
                     <div className="flex gap-4">
                         <CustomizeButton text={'Add Service'} />
-                        <button className="px-6 py-2  border border-blue-600  rounded-lg shadow-md hover:bg-blue-900 transition duration-200">
+                        <button className="px-6 py-2  border border-blue-600 dark:text-white text-black rounded-lg shadow-md hover:bg-blue-900 transition duration-200">
                             Browse Reviews
                         </button>
-
-
                     </div>
                 </motion.div>
 

@@ -6,7 +6,7 @@ import CustomizeButton from '../shared/CustomizeButton';
 const ServiceCart = ({ service }) => {
     return (
         <motion.div
-            className="w-full  bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col md:flex-row items-start md:items-center gap-6 p-5 border dark:border-gray-700"
+            className="w-full  bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col md:flex-row items-start md:items-center gap-6 p-5 border dark:border-gray-700"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}

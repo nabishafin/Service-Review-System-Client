@@ -1,16 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Global CSS (if needed) */
-body {
-    background-color: white;
-    color: black;
-}
-
-/* Apply dark mode styles when dark mode is enabled */
-.dark body {
-    background-color: #1a202c;
-    /* Tailwind's dark-gray (gray-900) */
-    color: white;
-}
