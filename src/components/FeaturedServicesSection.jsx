@@ -23,7 +23,7 @@ const FeaturedServicesSection = () => {
     };
 
     return (
-        <section className='bg-gray-100 py-16 dark:bg-gray-900  '>
+        <section className='bg-gray-100 py-16 dark:white'>
             <div className='md:w-10/12 w-full px-4 mx-auto'>
                 <div>
                     <Headline

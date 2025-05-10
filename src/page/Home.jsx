@@ -1,11 +1,11 @@
-import React from 'react';
+
 import Banner from '../components/Banner';
 import OurPartners from '../components/OurPartners';
 import FeaturedServicesSection from '../components/FeaturedServicesSection';
-import WhyChoseUs from '../components/WhyChoseUs';
 import Support from '../components/Support';
 
 import FAQ from '../components/FAQ ';
+import PlatformStats from '../components/PlatformStats';
 
 const Home = () => {
     return (
@@ -13,7 +13,7 @@ const Home = () => {
             <Banner />
             <FeaturedServicesSection />
             <OurPartners />
-            <WhyChoseUs></WhyChoseUs>
+            <PlatformStats />
             <Support />
             <FAQ />
         </div>

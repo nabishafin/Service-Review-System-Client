@@ -3,7 +3,7 @@ import React from 'react';
 const Support = () => {
     return (
         <div>
-            <div className="container mx-auto p-8 bg-white text-white rounded-lg shadow-md p-2">
+            <div className="w-full px-6 md:w-10/12 mx-auto  bg-white text-white rounded-lg  p-16">
                 <h2 className="text-2xl text-[#1c082b] font-bold mb-4">Looking For Support?</h2>
                 <p className="mb-6 text-[#1c082b]">Got a Question? We'd love to hear from you. Send us a message and we will respond you as soon as possible.</p>
 
@@ -28,7 +28,7 @@ const Support = () => {
                     <div className="form-control">
                         <label className="label cursor-pointer">
                             <span className="label-text">By signing and clicking Submit, you affirm you have read and agree to the Privacy Policy and Terms of Use and want to receive news.</span>
-                            <input type="checkbox" className="checkbox checkbox-primary" />
+
                         </label>
                     </div>
                 </div>

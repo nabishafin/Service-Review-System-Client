@@ -28,11 +28,11 @@ const FAQ = () => {
     ];
 
     return (
-        <div className="py-10 bg-gray-50 px-2">
+        <div className="py-10 bg-gray-50 px-6">
             <h2 className="text-2xl font-bold text-center md:text-4xl mb-5">Frequently Asked Questions</h2>
-            <div className="max-w-4xl mx-auto space-y-4">
+            <div className="w-full md:w-10/12  mx-auto space-y-4 ">
                 {faqData.map((item, index) => (
-                    <div key={index} className="collapse collapse-plus border border-base-300 rounded-lg">
+                    <div key={index} className="collapse collapse-plus border border-base-300 rounded-lg ">
                         <input
                             type="checkbox"
                             className="peer"
