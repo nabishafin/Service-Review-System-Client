@@ -16,9 +16,11 @@
     "date-fns": "^4.1.0",
     "firebase": "^11.1.0",
     "icons": "^1.0.0",
+    "install": "^0.13.0",
     "localforage": "^1.10.0",
     "match-sorter": "^8.0.0",
     "motion": "^11.15.0",
+    "npm": "^11.3.0",
     "react": "^18.3.1",
     "react-datepicker": "^7.5.0",
     "react-datetime-picker": "^6.0.1",
@@ -29,7 +31,7 @@
     "react-router-dom": "^7.1.0",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.15.3",
-    "swiper": "^11.1.15"
+    "swiper": "^11.2.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

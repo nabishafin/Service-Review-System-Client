@@ -23,7 +23,7 @@ const FeaturedServicesSection = () => {
     };
 
     return (
-        <div>
+        <div className='md:w-10/12 w-full px-4 mx-auto'>
             <div>
                 <Headline
                     tittle={' Featured Services Section'}

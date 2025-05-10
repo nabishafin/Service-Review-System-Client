@@ -4,7 +4,7 @@ import { FaHandsHelping, FaRegThumbsUp, FaUserShield } from 'react-icons/fa';
 const WhyChoseUs = () => {
     return (
         <div>
-            <section className="bg-gradient-to-r from-indigo-950 to-black text-white py-16 px-6 md:px-12">
+            <section className=" text-white py-16 px-6 md:px-12">
                 <div className="max-w-6xl mx-auto text-center">
                     <h2 className="text-4xl font-bold mb-6">Why Choose Us?</h2>
                     <p className="text-xl mb-12">
