@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import CustomizeButton from '../shared/CustomizeButton';
 
 const ServiceCart = ({ service }) => {
     return (
@@ -16,7 +17,7 @@ const ServiceCart = ({ service }) => {
                     alt={service.title}
                     className="w-full h-full object-cover rounded-xl shadow-md"
                 />
-                <div className="absolute top-3 right-3 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                <div className="absolute top-3 right-3 bg-blue-950 text-white px-3 py-1 rounded-full text-sm font-semibold">
                     {service.category}
                 </div>
             </div>
@@ -30,9 +31,7 @@ const ServiceCart = ({ service }) => {
                 <div className="flex items-center justify-between mt-4">
                     <p className="text-xl font-semibold text-blue-600 dark:text-blue-400">${service.price}</p>
                     <Link to={`/serviceinfo/${service._id}`}>
-                        <button className="px-6 py-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-200">
-                            See Details
-                        </button>
+                        <CustomizeButton text={'Details'} />
                     </Link>
                 </div>
             </div>

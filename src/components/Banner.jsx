@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import CustomizeButton from '../shared/CustomizeButton';
 
 const Banner = () => {
     const images = [
@@ -29,7 +30,7 @@ const Banner = () => {
 
     return (
 
-        <div className="w-full style={{ backgroundImage: `url(${images[currentIndex]})` }}
+        <div className="w-full 
  dark:bg-gray-900 py-16 px-6 lg:px-20 transition-colors duration-500">
             <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center gap-12">
 
@@ -43,7 +44,7 @@ const Banner = () => {
                     <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white leading-tight">
                         Share Your Service. Build Trust.
                     </h2>
-                    <p className="text-lg text-purple-900 dark:text-gray-300">
+                    <p className="text-lg text-gray-800 dark:text-gray-300">
                         Add your services and let others know what you offer. Clients can leave honest reviews to build your credibility in the marketplace.
                     </p>
                     <ul className="text-gray-600 dark:text-gray-400 space-y-2 pl-5 list-disc">
@@ -52,12 +53,12 @@ const Banner = () => {
                         <li>✔ Trusted platform for professionals and customers</li>
                     </ul>
                     <div className="flex gap-4">
-                        <button className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all">
-                            Add Your Service
-                        </button>
-                        <button className="px-6 py-3 border border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 rounded-lg font-semibold hover:bg-blue-50 dark:hover:bg-gray-800 transition-all">
+                        <CustomizeButton text={'Add Service'} />
+                        <button className="px-6 py-2  border border-blue-600  rounded-lg shadow-md hover:bg-blue-900 transition duration-200">
                             Browse Reviews
                         </button>
+
+
                     </div>
                 </motion.div>
 

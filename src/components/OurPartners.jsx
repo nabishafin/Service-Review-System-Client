@@ -44,7 +44,7 @@ const PartnersSection = () => {
                     </p>
                     <a
                         href="#"
-                        className="inline-block bg-yellow-400 text-black font-medium py-2 px-5 rounded hover:bg-yellow-500 transition"
+                        className="inline-block bg-white text-black font-medium py-2 px-5 rounded hover:bg-yellow-500 transition"
                     >
                         READ MORE
                     </a>
