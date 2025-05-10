@@ -4,6 +4,7 @@ import CustomizeButton from '../shared/CustomizeButton';
 import img3 from '../assets/syustem-2.jpg';
 import img2 from '../assets/tecnical support.jpg';
 import img1 from '../assets/service.webp';
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
     const images = [img1, img2, img3]; // Replace with your image imports
@@ -52,10 +53,14 @@ const Banner = () => {
                         <li>✔ Trusted platform for professionals and customers</li>
                     </ul>
                     <div className="flex gap-4">
-                        <CustomizeButton text={'Add Service'} />
-                        <button className="px-6 py-2  border border-blue-600 dark:text-white text-black rounded-lg shadow-md hover:bg-blue-900 transition duration-200">
-                            Browse Reviews
-                        </button>
+                        <Link to="/addservice">
+                            <CustomizeButton text={'Add Service'} />
+                        </Link>
+                        <Link to={'/reviews'}>
+                            <button className="px-6 py-2  border border-blue-600 dark:text-white text-black rounded-lg shadow-md hover:bg-blue-900 transition duration-200">
+                                My Reviews
+                            </button>
+                        </Link>
                     </div>
                 </motion.div>
 
