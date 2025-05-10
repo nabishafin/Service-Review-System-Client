@@ -95,8 +95,8 @@ const ServiceInfoPage = () => {
 
     return (
         <div>
-            <div className="flex flex-col md:flex-row justify-around gap-5 items-center min-h-[300px] md:max-w-screen-xl mx-auto p-2">
-                <div className="flex-1 w-full p-6 bg-white rounded-md shadow-md md:min-h-[400px] ">
+            <div className="flex flex-col mt-10 md:flex-row justify-between gap-5 items-center min-h-[300px] w-11/12 md:w-10/12 mx-auto p-2">
+                <div className="flex-1 w-full p-6 bg-white rounded-md shadow-md md:min-h-[400px]">
                     <div className="flex items-center justify-between">
                         <span className="text-sm font-light text-gray-800">
                             Date: {service.date}
@@ -106,7 +106,7 @@ const ServiceInfoPage = () => {
                         </span>
                     </div>
 
-                    <div className=''>
+                    <div className="">
                         <h1 className="mt-2 text-3xl font-semibold text-gray-800">
                             {service.title}
                         </h1>
@@ -143,7 +143,7 @@ const ServiceInfoPage = () => {
                     </div>
                 </div>
 
-                <section className="p-6 w-full bg-white rounded-md shadow-md flex-1 md:min-h-[300px] ">
+                <section className="p-6 w-full bg-white rounded-md shadow-md flex-1 md:min-h-[300px]">
                     <h2 className="text-lg font-semibold text-gray-700 capitalize">Place A Review</h2>
 
                     <form onSubmit={handleReviewForm}>
@@ -156,8 +156,8 @@ const ServiceInfoPage = () => {
                                 name="description"
                                 rows="2"
                                 placeholder="Description"
-                                value={description}  // Binding the textarea value to state
-                                onChange={(e) => setDescription(e.target.value)}  // Updating the description state
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
                                 className="textarea textarea-bordered w-full"
                                 required
                             ></textarea>
@@ -172,7 +172,7 @@ const ServiceInfoPage = () => {
                                     <label
                                         key={star}
                                         className={`cursor-pointer text-2xl ${rating >= star ? 'text-yellow-400' : 'text-gray-300'}`}
-                                        onClick={() => handleRatingChange(star)}  // Update the rating state on click
+                                        onClick={() => handleRatingChange(star)}
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -197,8 +197,8 @@ const ServiceInfoPage = () => {
                                 id="emailAddress"
                                 type="email"
                                 name="email"
-                                value={user?.user?.email}  // Binding the email input value to state
-                                disabled={true}  // Make the input read-only
+                                value={user?.user?.email}
+                                disabled={true}
                                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
                             />
                         </div>
@@ -215,7 +215,8 @@ const ServiceInfoPage = () => {
                 </section>
             </div>
 
-            <div>
+            {/* service page ar nicer review section */}
+            <div className='w-full md:w-10/12 mx-auto my-20'>
                 <Headline
                     tittle={'Discover Why Our Service is Trusted by Many'}
                     description={'This title and description aim to engage visitors and highlight the value of customer experiences.'}

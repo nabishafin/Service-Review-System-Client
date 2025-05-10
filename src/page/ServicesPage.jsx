@@ -6,6 +6,7 @@ const ServicesPage = () => {
     const [services, setServices] = useState([]);
     const [category, setCategory] = useState('Technology');
     const [search, setSearch] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetchAllJobs();
@@ -13,10 +14,13 @@ const ServicesPage = () => {
 
     const fetchAllJobs = async () => {
         try {
+            setIsLoading(true);
             const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/Services`);
             setServices(data);
         } catch (error) {
             console.error('Error fetching services:', error);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -33,118 +37,250 @@ const ServicesPage = () => {
     };
 
     return (
-        <div className="bg-gray-50 dark:bg-white text-black dark:text-gray-100">
+        <div className="bg-gray-50 text-gray-900">
             {/* Hero Section */}
-            <section className="relative bg-white dark:bg-white text-white text-center py-20 px-5">
-                <img
-                    src="https://i.ibb.co.com/FZK6Ww1/company-img.jpg"
-                    className="absolute inset-0 w-full h-full object-cover backdrop-blur-lg"
-                    alt="Banner"
-                />
-                <div className="relative z-10 max-w-3xl mx-auto">
-                    <h1 className="text-4xl font-bold">Find the Right Service for You</h1>
-                    <p className="text-lg mt-3">
-                        Browse thousands of trusted services in technology, health, finance, and more.
+            <section className="relative bg-gradient-to-r from-black via-gray-900 to-black text-white text-center py-24 px-5">
+                <div className="absolute inset-0 bg-black/30 z-0"></div>
+                <div className="relative z-10 max-w-4xl mx-auto">
+                    <h1 className="text-4xl md:text-5xl font-bold mb-4">Discover Premium Services</h1>
+                    <p className="text-xl md:text-2xl mb-8">
+                        Connect with top-rated professionals across various industries
                     </p>
+                    <div className="max-w-xl mx-auto">
+                        <div className="flex p-1 overflow-hidden rounded-lg bg-white/10 backdrop-blur-sm">
+                            <input
+                                className="px-6 py-3 text-white placeholder-white/70 bg-transparent outline-none w-full"
+                                type="text"
+                                name="search"
+                                onChange={handleSearchChange}
+                                placeholder="Search services..."
+                            />
+                            <button
+                                type="button"
+                                className="px-6 py-3 bg-white text-blue-900 font-medium rounded hover:bg-gray-100 transition-colors">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Stats Bar */}
+            <section className="bg-white py-8 shadow-sm">
+                <div className="w-full md:w-10/12 mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div className="p-4">
+                        <div className="text-3xl font-bold text-blue-600">10K+</div>
+                        <div className="text-gray-600">Services Offered</div>
+                    </div>
+                    <div className="p-4">
+                        <div className="text-3xl font-bold text-blue-600">5K+</div>
+                        <div className="text-gray-600">Verified Professionals</div>
+                    </div>
+                    <div className="p-4">
+                        <div className="text-3xl font-bold text-blue-600">98%</div>
+                        <div className="text-gray-600">Satisfaction Rate</div>
+                    </div>
+                    <div className="p-4">
+                        <div className="text-3xl font-bold text-blue-600">24/7</div>
+                        <div className="text-gray-600">Customer Support</div>
+                    </div>
                 </div>
             </section>
 
             {/* Feature Highlights */}
-            <section className=''>
-                <section className='bg-white dark:bg-gray-800 py-16 px-6'>
-                    <div className="w-full md:w-10/12 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                        {[{
-                            title: 'Trusted Experts',
-                            desc: 'Verified and reviewed service providers.',
-                            icon: 'https://cdn-icons-png.flaticon.com/512/1055/1055687.png',
-                        },
-                        {
-                            title: 'Personalized Search',
-                            desc: 'Easily filter by category and need.',
-                            icon: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
-                        },
-                        {
-                            title: 'Fast & Reliable',
-                            desc: 'Quick response and delivery.',
-                            icon: 'https://cdn-icons-png.flaticon.com/512/190/190411.png',
-                        },
-                        {
-                            title: 'Secure Payments',
-                            desc: 'Safe and transparent payment process.',
-                            icon: 'https://cdn-icons-png.flaticon.com/512/1828/1828640.png',
-                        }]
-                            .map((item, i) => (
-                                <div key={i} className="bg-white dark:white dark:text-black rounded-lg p-6 shadow">
-                                    <img src={item.icon} className="w-12 h-12 mx-auto" />
-                                    <h3 className="font-bold mt-3">{item.title}</h3>
-                                    <p className="text-sm text-gray-600 dark:text-black mt-1">{item.desc}</p>
-                                </div>
-                            ))}
-                    </div>
-                </section>
-
-                {/* Search & Filter */}
-                <div className="w-full md:w-10/12 mx-auto flex flex-col md:flex-row justify-center items-center my-5 space-y-3 md:space-y-0">
-                    <form className="w-full md:w-auto p-1">
-                        <div className="flex p-1 overflow-hidden border rounded-lg focus-within:ring focus-within:border-blue-400">
-                            <input
-                                className="px-6 py-2 text-gray-700 dark:text-white placeholder-gray-500 bg-white dark:bg-white outline-none w-full"
-                                type="text"
-                                name="search"
-                                onChange={handleSearchChange}
-                                placeholder="Enter Job Title"
-                            />
-                            <button
-                                type="button"
-                                className="px-4 py-2 bg-blue-950 text-white font-medium rounded hover:bg-blue-600">
-                                Search
-                            </button>
-                        </div>
-                    </form>
-                    <details className="dropdown text-center">
-                        <summary className="btn m-1">Filter By Category</summary>
-                        <ul className="menu dropdown-content bg-white dark:bg-gray-800 rounded-box z-[1] w-52 p-2 shadow text-gray-700 dark:text-white">
-                            <li onClick={() => setCategory('Technology')}><a>Technology</a></li>
-                            <li onClick={() => setCategory('Health')}><a>Health</a></li>
-                            <li onClick={() => setCategory('Food & Beverage')}><a>Food & Beverage</a></li>
-                            <li onClick={() => setCategory('Finance')}><a>Finance</a></li>
-                        </ul>
-                    </details>
-                </div>
-
-                {/* Service Cards */}
-                <div className="w-full md:w-10/12 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 px-6 pb-10">
-                    {filteredServices.map(service => (
-                        <SingleSirviceCart key={service._id} service={service} />
-                    ))}
-                </div>
-
-                {/* How It Works */}
-                <section className="bg-white dark:bg-gray-800 py-16 px-6">
-                    <h2 className="text-3xl font-bold text-center mb-8">How It Works</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto text-center">
-                        {["Browse Services", "Contact Provider", "Get Results"].map((step, index) => (
-                            <div key={index}>
-                                <img src={index === 0 ? "https://cdn-icons-png.flaticon.com/512/684/684908.png" :
-                                    index === 1 ? "https://cdn-icons-png.flaticon.com/512/1828/1828817.png" :
-                                        "https://cdn-icons-png.flaticon.com/512/709/709496.png"} className="w-16 h-16 mx-auto" />
-                                <h4 className="font-semibold mt-3">{index + 1}. {step}</h4>
-                                <p className="text-sm text-gray-600 dark:text-gray-300">
-                                    {index === 0 ? "Search and filter services by category or keyword." :
-                                        index === 1 ? "Reach out or book directly with your chosen expert." :
-                                            "Receive quality service with transparency and support."}
-                                </p>
+            <section className="py-16 px-6 bg-gray-50">
+                <div className="max-w-7xl mx-auto">
+                    <h2 className="text-3xl font-bold text-center mb-12">Why Choose Our Platform</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {[
+                            {
+                                title: 'Vetted Professionals',
+                                desc: 'Every service provider undergoes rigorous verification.',
+                                icon: '✅',
+                                bg: 'bg-blue-50'
+                            },
+                            {
+                                title: 'Transparent Pricing',
+                                desc: 'No hidden fees. Know exactly what you\'ll pay.',
+                                icon: '💰',
+                                bg: 'bg-green-50'
+                            },
+                            {
+                                title: 'Quality Guarantee',
+                                desc: 'We stand behind every service with our satisfaction guarantee.',
+                                icon: '⭐',
+                                bg: 'bg-yellow-50'
+                            },
+                            {
+                                title: 'Secure Payments',
+                                desc: 'Your transactions are always protected.',
+                                icon: '🔒',
+                                bg: 'bg-purple-50'
+                            }
+                        ].map((item, i) => (
+                            <div key={i} className={`${item.bg} p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow`}>
+                                <div className="text-2xl mb-4">{item.icon}</div>
+                                <h3 className="font-bold text-xl mb-2">{item.title}</h3>
+                                <p className="text-gray-600">{item.desc}</p>
                             </div>
                         ))}
                     </div>
-                </section>
-
-                {/* Testimonials */}
-
-
+                </div>
             </section>
 
-        </div >
+            {/* Services Section */}
+            <section className="py-16 px-6 bg-white">
+                <div className="max-w-7xl mx-auto">
+                    <div className="flex flex-col md:flex-row justify-between items-center mb-10">
+                        <h2 className="text-3xl font-bold mb-4 md:mb-0">
+                            {category} Services
+                            <span className="text-gray-500 text-lg ml-2">({filteredServices.length} available)</span>
+                        </h2>
+                        <div className="flex items-center space-x-4">
+                            <div className="relative">
+                                <select
+                                    className="appearance-none bg-gray-100 border-0 rounded-lg px-4 py-2 pr-8 focus:ring-2 focus:ring-blue-500"
+                                    value={category}
+                                    onChange={(e) => setCategory(e.target.value)}
+                                >
+                                    <option value="Technology">Technology</option>
+                                    <option value="Health">Health</option>
+                                    <option value="Food & Beverage">Food & Beverage</option>
+                                    <option value="Finance">Finance</option>
+                                </select>
+                                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {isLoading ? (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {[...Array(4)].map((_, i) => (
+                                <div key={i} className="bg-gray-100 rounded-xl h-80 animate-pulse"></div>
+                            ))}
+                        </div>
+                    ) : filteredServices.length > 0 ? (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {filteredServices.map(service => (
+                                <SingleSirviceCart key={service._id} service={service} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="text-center py-16">
+                            <div className="text-5xl mb-4">🔍</div>
+                            <h3 className="text-xl font-semibold mb-2">No services found</h3>
+                            <p className="text-gray-600">Try adjusting your search or filter criteria</p>
+                            <button
+                                onClick={() => {
+                                    setSearch('');
+                                    setCategory('Technology');
+                                }}
+                                className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                            >
+                                Reset Filters
+                            </button>
+                        </div>
+                    )}
+                </div>
+            </section>
+
+            {/* How It Works */}
+            <section className="py-16 px-6 bg-gradient-to-r from-black via-gray-900 to-black">
+                <div className="max-w-7xl mx-auto">
+                    <h2 className="text-3xl font-bold text-center text-white mb-4">How It Works</h2>
+                    <p className="text-center text-white max-w-2xl mx-auto mb-12">
+                        Getting the right service has never been easier. Follow these simple steps to find your perfect match.
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                        <div className="absolute top-16 left-1/4 right-1/4 h-1 bg-gray-200 hidden md:block"></div>
+                        {[
+                            {
+                                title: "Browse & Compare",
+                                desc: "Explore our extensive catalog of services. Filter by category, price, or ratings to find what you need.",
+                                icon: "👀"
+                            },
+                            {
+                                title: "Book & Connect",
+                                desc: "Select your preferred provider and schedule a consultation. Our messaging system makes communication easy.",
+                                icon: "📅"
+                            },
+                            {
+                                title: "Get Results",
+                                desc: "Receive exceptional service with our quality guarantee. We're here to support you every step of the way.",
+                                icon: "🎯"
+                            }
+                        ].map((step, index) => (
+                            <div key={index} className="bg-white p-8 rounded-xl shadow-sm text-center relative z-10 hover:shadow-md transition-shadow">
+                                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                                    {step.icon}
+                                </div>
+                                <div className="font-bold text-xl mb-2">{step.title}</div>
+                                <div className="text-gray-600">{step.desc}</div>
+                                <div className="mt-4 text-blue-600 font-bold">{index + 1}</div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Testimonials */}
+            <section className="py-16 px-6 bg-white">
+                <div className="max-w-7xl mx-auto">
+                    <h2 className="text-3xl font-bold text-center mb-12">What Our Clients Say</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {[
+                            {
+                                quote: "Found the perfect web developer for my startup. The platform made it so easy to compare options and make a decision.",
+                                author: "Sarah Johnson",
+                                role: "CEO, TechStart Inc.",
+                                rating: 5
+                            },
+                            {
+                                quote: "As a small business owner, this service has saved me countless hours searching for reliable professionals.",
+                                author: "Michael Chen",
+                                role: "Owner, Chen's Kitchen",
+                                rating: 5
+                            },
+                            {
+                                quote: "The quality of service providers here is exceptional. I've used multiple services and have never been disappointed.",
+                                author: "Emma Rodriguez",
+                                role: "Marketing Director",
+                                rating: 4
+                            }
+                        ].map((testimonial, index) => (
+                            <div key={index} className="bg-gray-50 p-6 rounded-lg">
+                                <div className="flex mb-4">
+                                    {[...Array(testimonial.rating)].map((_, i) => (
+                                        <span key={i} className="text-yellow-400">★</span>
+                                    ))}
+                                </div>
+                                <p className="italic mb-4">"{testimonial.quote}"</p>
+                                <div className="font-semibold">{testimonial.author}</div>
+                                <div className="text-sm text-gray-600">{testimonial.role}</div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* CTA */}
+            <section className="py-16 px-6 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+                <div className="max-w-4xl mx-auto text-center">
+                    <h2 className="text-3xl font-bold mb-4">Ready to Find Your Perfect Service?</h2>
+                    <p className="text-xl mb-8">Join thousands of satisfied customers who found exactly what they needed.</p>
+                    <div className="flex flex-col sm:flex-row justify-center gap-4">
+                        <button className="px-8 py-3 bg-white text-blue-700 font-bold rounded-lg hover:bg-gray-100 transition-colors">
+                            Browse Services
+                        </button>
+                        <button className="px-8 py-3 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-colors">
+                            Become a Provider
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
     );
 };
 
