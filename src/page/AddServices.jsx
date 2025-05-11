@@ -5,6 +5,7 @@ import { AuthContext } from '../provider/AuthProvider';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import CustomizeButton from '../shared/CustomizeButton';
 
 
 
@@ -113,7 +114,11 @@ const AddServices = () => {
 
                     {/* <!-- Submit Button --> */}
                     <div>
-                        <button type="submit" class="btn btn-primary w-full">Submit Service</button>
+                        <button type="submit"
+
+                        >
+                            <CustomizeButton text={'Submit Service'} />
+                        </button>
                     </div>
                 </form>
             </div>
