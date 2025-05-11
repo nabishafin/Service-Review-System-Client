@@ -127,8 +127,8 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             {isMenuOpen && (
-                <div className="lg:hidden px-4 pb-4 bg-white dark:bg-gray-900 shadow-md transition z-40">
-                    <ul className="flex flex-col space-y-2 font-semibold">
+                <div className="lg:hidden px-4 pb-4 bg-white dark:bg-black shadow-md transition z-40">
+                    <ul className="flex flex-col space-y-2 font-semibold text-black dark:text-white">
                         <Link to="/" onClick={closeMobileMenu} className={`${isActive('/') ? 'text-blue-600 dark:text-blue-400' : ''}`}>Home</Link>
                         <Link to="/services" onClick={closeMobileMenu} className={`${isActive('/services') ? 'text-blue-600 dark:text-blue-400' : ''}`}>Services</Link>
 
@@ -146,6 +146,7 @@ const Navbar = () => {
                     </ul>
                 </div>
             )}
+
         </div>
     );
 };
