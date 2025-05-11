@@ -8,7 +8,7 @@ const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [darkMode, setDarkMode] = useState(() => localStorage.getItem('theme') === 'dark');
+    const [darkMode, setDarkMode] = useState(() => localStorage.getItem('theme') === 'light');
     const location = useLocation();
     const dropdownRef = useRef(null);
 
