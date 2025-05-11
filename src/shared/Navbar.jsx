@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import { FiMoon, FiSun } from 'react-icons/fi';
@@ -7,8 +7,10 @@ import icon from '../assets/icons8-service-96.png';
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [darkMode, setDarkMode] = useState(() => localStorage.getItem('theme') === 'dark');
     const location = useLocation();
+    const dropdownRef = useRef(null);
 
     const toggleDarkMode = () => {
         const newMode = !darkMode;
@@ -32,6 +34,19 @@ const Navbar = () => {
 
     const isActive = (path) => location.pathname === path;
     const closeMobileMenu = () => setIsMenuOpen(false);
+
+    // Close dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setIsDropdownOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     return (
         <div className="w-full sticky top-0 z-50 bg-white dark:bg-gray-900 transition-colors duration-500">
@@ -66,13 +81,37 @@ const Navbar = () => {
                         {darkMode ? <FiMoon size={25} /> : <FiSun size={25} />}
                     </button>
 
-                    {/* User Avatar / Login */}
+                    {/* User Avatar / Dropdown / Login */}
                     {user ? (
-                        <img
-                            src={user?.photoURL}
-                            alt="user"
-                            className="w-10 h-10 rounded-full hidden lg:block"
-                        />
+                        <div className="relative hidden lg:block" ref={dropdownRef}>
+                            <button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+                                <img
+                                    src={user?.photoURL}
+                                    alt="user"
+                                    className="w-10 h-10 rounded-full"
+                                />
+                            </button>
+                            {isDropdownOpen && (
+                                <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-800 shadow-md rounded-md z-50">
+                                    <Link
+                                        to="/profile"
+                                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                                        onClick={() => setIsDropdownOpen(false)}
+                                    >
+                                        Profile
+                                    </Link>
+                                    <button
+                                        onClick={() => {
+                                            logOut();
+                                            setIsDropdownOpen(false);
+                                        }}
+                                        className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                                    >
+                                        Logout
+                                    </button>
+                                </div>
+                            )}
+                        </div>
                     ) : (
                         <Link to="/login" className="font-semibold hover:text-blue-600 dark:hover:text-blue-400 hidden lg:block">Login</Link>
                     )}
