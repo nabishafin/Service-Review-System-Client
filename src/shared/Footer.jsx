@@ -8,7 +8,7 @@ const Footer = () => {
                 <aside>
                     <img src={icon} alt="" />
                     <p>
-                        Service-Review-System
+                        ServiceHub
                         <br />
                         Providing reliable tech since 1992
                     </p>
