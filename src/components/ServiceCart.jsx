@@ -29,7 +29,7 @@ const ServiceCart = ({ service }) => {
                 </p>
 
                 <div className="flex items-center justify-between mt-4">
-                    <p className="text-xl font-semibold text-blue-600 dark:text-blue-400">${service.price}</p>
+                    <p className="text-xl font-semibold text-blue-950 dark:text-blue-900">${service.price}</p>
                     <Link to={`/serviceinfo/${service._id}`}>
                         <CustomizeButton text={'Details'} />
                     </Link>
