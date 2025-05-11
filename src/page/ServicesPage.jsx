@@ -1,12 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import SingleSirviceCart from '../components/SingleSirviceCart';
+import PlatformStats from '../components/PlatformStats';
 
 const ServicesPage = () => {
     const [services, setServices] = useState([]);
     const [category, setCategory] = useState('Technology');
     const [search, setSearch] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+
 
     useEffect(() => {
         fetchAllJobs();
@@ -66,26 +68,7 @@ const ServicesPage = () => {
             </section>
 
             {/* Stats Bar */}
-            <section className="bg-white py-8 shadow-sm">
-                <div className="w-full md:w-10/12 mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                    <div className="p-4">
-                        <div className="text-3xl font-bold text-blue-600">10K+</div>
-                        <div className="text-gray-600">Services Offered</div>
-                    </div>
-                    <div className="p-4">
-                        <div className="text-3xl font-bold text-blue-600">5K+</div>
-                        <div className="text-gray-600">Verified Professionals</div>
-                    </div>
-                    <div className="p-4">
-                        <div className="text-3xl font-bold text-blue-600">98%</div>
-                        <div className="text-gray-600">Satisfaction Rate</div>
-                    </div>
-                    <div className="p-4">
-                        <div className="text-3xl font-bold text-blue-600">24/7</div>
-                        <div className="text-gray-600">Customer Support</div>
-                    </div>
-                </div>
-            </section>
+            <PlatformStats />
 
             {/* Feature Highlights */}
             <section className="py-16 px-6 bg-gray-50">

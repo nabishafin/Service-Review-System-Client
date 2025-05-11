@@ -1,14 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
-import { FiMoon, FiSun, FiUser } from 'react-icons/fi';
+import { FiMoon, FiSun } from 'react-icons/fi';
 import icon from '../assets/icons8-service-96.png';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [darkMode, setDarkMode] = useState(() => localStorage.getItem('theme') === 'dark');
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const location = useLocation();
 
     const toggleDarkMode = () => {
@@ -32,7 +31,6 @@ const Navbar = () => {
     }, [darkMode]);
 
     const isActive = (path) => location.pathname === path;
-    const toggleDropdown = () => setIsDropdownOpen(prev => !prev);
     const closeMobileMenu = () => setIsMenuOpen(false);
 
     return (
@@ -70,64 +68,13 @@ const Navbar = () => {
 
                     {/* User Avatar / Login */}
                     {user ? (
-                        <div className="relative lg:block hidden">
-                            <button
-                                className="btn btn-ghost btn-circle avatar"
-                                onClick={toggleDropdown}
-                            >
-                                <img src={user?.photoURL} alt="user" className="w-10 h-10 rounded-full" />
-                            </button>
-                            {isDropdownOpen && (
-                                <ul className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow rounded-lg py-2 z-50">
-                                    <li>
-                                        <Link
-                                            to="/profile"
-                                            className={`block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 ${isActive('/profile') ? 'text-blue-600 dark:text-blue-400' : ''
-                                                }`}
-                                        >
-                                            Profile
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link
-                                            to="/myServices"
-                                            className={`block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 ${isActive('/myServices') ? 'text-blue-600 dark:text-blue-400' : ''
-                                                }`}
-                                        >
-                                            My Services
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link
-                                            to="/reviews"
-                                            className={`block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 ${isActive('/reviews') ? 'text-blue-600 dark:text-blue-400' : ''
-                                                }`}
-                                        >
-                                            My Reviews
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link
-                                            to="/addservice"
-                                            className={`block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 ${isActive('/addservice') ? 'text-blue-600 dark:text-blue-400' : ''
-                                                }`}
-                                        >
-                                            Add Service
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <button
-                                            onClick={logOut}
-                                            className="w-full text-left px-4 py-2 hover:bg-red-500 hover:text-white dark:hover:bg-red-600"
-                                        >
-                                            Logout
-                                        </button>
-                                    </li>
-                                </ul>
-                            )}
-                        </div>
+                        <img
+                            src={user?.photoURL}
+                            alt="user"
+                            className="w-10 h-10 rounded-full hidden lg:block"
+                        />
                     ) : (
-                        <Link to="/login" className="font-semibold hover:text-blue-600 dark:hover:text-blue-400 lg:block hidden">Login</Link>
+                        <Link to="/login" className="font-semibold hover:text-blue-600 dark:hover:text-blue-400 hidden lg:block">Login</Link>
                     )}
 
                     {/* Mobile Menu Icon */}
@@ -141,27 +88,18 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             {isMenuOpen && (
-                <div className="lg:hidden px-4 pb-4 bg-white dark:bg-gray-900 shadow-md transition">
+                <div className="lg:hidden px-4 pb-4 bg-white dark:bg-gray-900 shadow-md transition z-40">
                     <ul className="flex flex-col space-y-2 font-semibold">
                         <Link to="/" onClick={closeMobileMenu} className={`${isActive('/') ? 'text-blue-600 dark:text-blue-400' : ''}`}>Home</Link>
                         <Link to="/services" onClick={closeMobileMenu} className={`${isActive('/services') ? 'text-blue-600 dark:text-blue-400' : ''}`}>Services</Link>
+
                         {user ? (
                             <>
-                                <li className="relative">
-                                    <button onClick={toggleDropdown} className="flex items-center gap-2 w-full text-left">
-                                        <FiUser size={20} />
-                                        <span>Profile</span>
-                                    </button>
-                                    {isDropdownOpen && (
-                                        <ul className="ml-6 mt-2 space-y-2">
-                                            <Link to="/profile" onClick={closeMobileMenu} className={`${isActive('/profile') ? 'text-blue-600 dark:text-blue-400' : ''}`}>Profile</Link>
-                                            <Link to="/myServices" onClick={closeMobileMenu} className={`${isActive('/myServices') ? 'text-blue-600 dark:text-blue-400' : ''}`}>My Services</Link>
-                                            <Link to="/reviews" onClick={closeMobileMenu} className={`${isActive('/reviews') ? 'text-blue-600 dark:text-blue-400' : ''}`}>My Reviews</Link>
-                                            <Link to="/addservice" onClick={closeMobileMenu} className={`${isActive('/addservice') ? 'text-blue-600 dark:text-blue-400' : ''}`}>Add Service</Link>
-                                            <button onClick={logOut} className="text-left hover:text-red-500 dark:hover:text-red-600">Logout</button>
-                                        </ul>
-                                    )}
-                                </li>
+                                <Link to="/profile" onClick={closeMobileMenu} className={`${isActive('/profile') ? 'text-blue-600 dark:text-blue-400' : ''}`}>Profile</Link>
+                                <Link to="/myServices" onClick={closeMobileMenu} className={`${isActive('/myServices') ? 'text-blue-600 dark:text-blue-400' : ''}`}>My Services</Link>
+                                <Link to="/reviews" onClick={closeMobileMenu} className={`${isActive('/reviews') ? 'text-blue-600 dark:text-blue-400' : ''}`}>My Reviews</Link>
+                                <Link to="/addservice" onClick={closeMobileMenu} className={`${isActive('/addservice') ? 'text-blue-600 dark:text-blue-400' : ''}`}>Add Service</Link>
+                                <button onClick={() => { logOut(); closeMobileMenu(); }} className="text-left hover:text-red-500 dark:hover:text-red-600">Logout</button>
                             </>
                         ) : (
                             <Link to="/login" onClick={closeMobileMenu}>Login</Link>
