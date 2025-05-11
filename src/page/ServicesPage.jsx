@@ -265,21 +265,6 @@ const ServicesPage = () => {
                 </div>
             </section>
 
-            {/* CTA */}
-            <section className="py-16 px-6 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
-                <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-3xl font-bold mb-4">Ready to Find Your Perfect Service?</h2>
-                    <p className="text-xl mb-8">Join thousands of satisfied customers who found exactly what they needed.</p>
-                    <div className="flex flex-col sm:flex-row justify-center gap-4">
-                        <button className="px-8 py-3 bg-white text-blue-700 font-bold rounded-lg hover:bg-gray-100 transition-colors">
-                            Browse Services
-                        </button>
-                        <button className="px-8 py-3 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-colors">
-                            Become a Provider
-                        </button>
-                    </div>
-                </div>
-            </section>
         </div>
     );
 };

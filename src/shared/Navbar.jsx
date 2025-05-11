@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
-import { FiMoon, FiSun } from 'react-icons/fi';
+import { FiMoon, FiSun, FiUser } from 'react-icons/fi';
 import icon from '../assets/icons8-service-96.png';
 
 const Navbar = () => {
@@ -33,6 +33,7 @@ const Navbar = () => {
 
     const isActive = (path) => location.pathname === path;
     const toggleDropdown = () => setIsDropdownOpen(prev => !prev);
+    const closeMobileMenu = () => setIsMenuOpen(false);
 
     return (
         <div className="w-full sticky top-0 z-50 bg-white dark:bg-gray-900 transition-colors duration-500">
@@ -64,12 +65,12 @@ const Navbar = () => {
                         className="p-2 rounded-full transition hover:bg-gray-200 dark:hover:bg-gray-700"
                         title="Toggle Dark Mode"
                     >
-                        {darkMode ? <FiMoon size={20} /> : <FiSun size={20} />}
+                        {darkMode ? <FiMoon size={25} /> : <FiSun size={25} />}
                     </button>
 
                     {/* User Avatar / Login */}
                     {user ? (
-                        <div className="relative">
+                        <div className="relative lg:block hidden">
                             <button
                                 className="btn btn-ghost btn-circle avatar"
                                 onClick={toggleDropdown}
@@ -126,15 +127,15 @@ const Navbar = () => {
                             )}
                         </div>
                     ) : (
-                        <Link to="/login" className="font-semibold hover:text-blue-600 dark:hover:text-blue-400">Login</Link>
+                        <Link to="/login" className="font-semibold hover:text-blue-600 dark:hover:text-blue-400 lg:block hidden">Login</Link>
                     )}
-                </div>
 
-                {/* Mobile Menu Icon */}
-                <div className="lg:hidden">
-                    <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-xl">
-                        ☰
-                    </button>
+                    {/* Mobile Menu Icon */}
+                    <div className="lg:hidden">
+                        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-xl">
+                            ☰
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -142,17 +143,28 @@ const Navbar = () => {
             {isMenuOpen && (
                 <div className="lg:hidden px-4 pb-4 bg-white dark:bg-gray-900 shadow-md transition">
                     <ul className="flex flex-col space-y-2 font-semibold">
-                        <Link to="/" onClick={() => setIsMenuOpen(false)} className={`${isActive('/') ? 'text-blue-600 dark:text-blue-400' : ''}`}>Home</Link>
-                        <Link to="/services" onClick={() => setIsMenuOpen(false)} className={`${isActive('/services') ? 'text-blue-600 dark:text-blue-400' : ''}`}>Services</Link>
-                        {user && (
+                        <Link to="/" onClick={closeMobileMenu} className={`${isActive('/') ? 'text-blue-600 dark:text-blue-400' : ''}`}>Home</Link>
+                        <Link to="/services" onClick={closeMobileMenu} className={`${isActive('/services') ? 'text-blue-600 dark:text-blue-400' : ''}`}>Services</Link>
+                        {user ? (
                             <>
-                                <Link to="/myServices" onClick={() => setIsMenuOpen(false)} className={`${isActive('/myServices') ? 'text-blue-600 dark:text-blue-400' : ''}`}>My Services</Link>
-                                <Link to="/reviews" onClick={() => setIsMenuOpen(false)} className={`${isActive('/reviews') ? 'text-blue-600 dark:text-blue-400' : ''}`}>My Reviews</Link>
-                                <Link to="/addservice" onClick={() => setIsMenuOpen(false)} className={`${isActive('/addservice') ? 'text-blue-600 dark:text-blue-400' : ''}`}>Add Service</Link>
+                                <li className="relative">
+                                    <button onClick={toggleDropdown} className="flex items-center gap-2 w-full text-left">
+                                        <FiUser size={20} />
+                                        <span>Profile</span>
+                                    </button>
+                                    {isDropdownOpen && (
+                                        <ul className="ml-6 mt-2 space-y-2">
+                                            <Link to="/profile" onClick={closeMobileMenu} className={`${isActive('/profile') ? 'text-blue-600 dark:text-blue-400' : ''}`}>Profile</Link>
+                                            <Link to="/myServices" onClick={closeMobileMenu} className={`${isActive('/myServices') ? 'text-blue-600 dark:text-blue-400' : ''}`}>My Services</Link>
+                                            <Link to="/reviews" onClick={closeMobileMenu} className={`${isActive('/reviews') ? 'text-blue-600 dark:text-blue-400' : ''}`}>My Reviews</Link>
+                                            <Link to="/addservice" onClick={closeMobileMenu} className={`${isActive('/addservice') ? 'text-blue-600 dark:text-blue-400' : ''}`}>Add Service</Link>
+                                            <button onClick={logOut} className="text-left hover:text-red-500 dark:hover:text-red-600">Logout</button>
+                                        </ul>
+                                    )}
+                                </li>
                             </>
-                        )}
-                        {!user && (
-                            <Link to="/login" onClick={() => setIsMenuOpen(false)}>Login</Link>
+                        ) : (
+                            <Link to="/login" onClick={closeMobileMenu}>Login</Link>
                         )}
                     </ul>
                 </div>
