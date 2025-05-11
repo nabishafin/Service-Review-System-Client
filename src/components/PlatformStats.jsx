@@ -37,7 +37,7 @@ const PlatformStats = () => {
                     {stats.map(({ label, end, icon }, idx) => (
                         <div key={idx} className="space-y-2">
                             <div className="flex justify-center text-3xl dark:text-white">{icon}</div>
-                            <h3 className="text-3xl font-bold text-blue-950">
+                            <h3 className="text-3xl font-bold text-blue-950 dark:text-white">
                                 {startCount ? <CountUp end={end} duration={2} /> : 0}+
                             </h3>
                             <p className="text-gray-700 dark:text-gray-300 text-sm">{label}</p>
